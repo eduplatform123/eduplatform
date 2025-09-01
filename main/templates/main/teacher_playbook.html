@@ -1,0 +1,427 @@
+{% extends 'base.html' %}
+
+{% block title %}Плейбук для преподавателей - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">
+                <i class="fas fa-tachometer-alt me-1"></i>Панель управления
+            </a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <i class="fas fa-book-open me-1"></i>Плейбук для преподавателей
+            </li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h3 mb-0">
+                    <i class="fas fa-book-open me-2"></i>
+                    Плейбук для преподавателей
+                </h1>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Назад к панели
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-list me-2"></i>Содержание
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Основные разделы:</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="#getting-started" class="text-decoration-none">1. Начало работы</a></li>
+                                <li><a href="#daily-routine" class="text-decoration-none">2. Ежедневная рутина</a></li>
+                                <li><a href="#response-process" class="text-decoration-none">3. Процесс ответа</a></li>
+                                <li><a href="#best-practices" class="text-decoration-none">4. Лучшие практики</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Дополнительные материалы:</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="#templates" class="text-decoration-none">5. Шаблоны ответов</a></li>
+                                <li><a href="#troubleshooting" class="text-decoration-none">6. Решение проблем</a></li>
+                                <li><a href="#resources" class="text-decoration-none">7. Полезные ресурсы</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" id="getting-started">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-rocket me-2"></i>1. Начало работы
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Первые шаги в системе:</h6>
+                    <ol>
+                        <li><strong>Вход в систему:</strong> Используйте свои учетные данные для входа</li>
+                        <li><strong>Знакомство с интерфейсом:</strong> Изучите панель управления и навигацию</li>
+                        <li><strong>Проверка обращений:</strong> Просмотрите существующие обращения</li>
+                        <li><strong>Изучение статусов:</strong> Поймите систему статусов обращений</li>
+                    </ol>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Совет:</strong> В первый день работы уделите время изучению интерфейса и существующих обращений.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" id="daily-routine">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-calendar-day me-2"></i>2. Ежедневная рутина
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Рекомендуемый распорядок дня:</h6>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-primary">Утро (9:00-10:00)</h6>
+                            <ul>
+                                <li>Проверка новых обращений</li>
+                                <li>Обновление статусов</li>
+                                <li>Планирование ответов</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-success">День (14:00-15:00)</h6>
+                            <ul>
+                                <li>Ответы на обращения</li>
+                                <li>Работа с приоритетными вопросами</li>
+                                <li>Консультации с коллегами</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <h6 class="text-warning">Вечер (17:00-18:00)</h6>
+                            <ul>
+                                <li>Завершение ответов</li>
+                                <li>Обновление статусов</li>
+                                <li>Планирование на завтра</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-info">Еженедельно</h6>
+                            <ul>
+                                <li>Анализ статистики</li>
+                                <li>Изучение повторяющихся проблем</li>
+                                <li>Обновление шаблонов ответов</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" id="response-process">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-comments me-2"></i>3. Процесс ответа
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Пошаговый алгоритм работы с обращением:</h6>
+                    
+                    <div class="timeline">
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <span class="badge bg-primary">Шаг 1</span>
+                            </div>
+                            <div class="col-md-10">
+                                <h6>Анализ обращения</h6>
+                                <p>Внимательно прочитайте обращение, определите суть проблемы и приоритетность.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <span class="badge bg-info">Шаг 2</span>
+                            </div>
+                            <div class="col-md-10">
+                                <h6>Обновление статуса</h6>
+                                <p>Измените статус на "В работе" и при необходимости проконсультируйтесь с коллегами.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <span class="badge bg-warning">Шаг 3</span>
+                            </div>
+                            <div class="col-md-10">
+                                <h6>Подготовка ответа</h6>
+                                <p>Составьте четкий, конструктивный ответ с конкретными рекомендациями.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <span class="badge bg-success">Шаг 4</span>
+                            </div>
+                            <div class="col-md-10">
+                                <h6>Отправка ответа</h6>
+                                <p>Отправьте ответ и обновите статус на "Завершено" или "В работе" если требуется дополнительная работа.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" id="best-practices">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-star me-2"></i>4. Лучшие практики
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-success">✅ Что делать:</h6>
+                            <ul>
+                                <li>Отвечать в течение 24 часов</li>
+                                <li>Использовать вежливый и профессиональный тон</li>
+                                <li>Давать конкретные и actionable рекомендации</li>
+                                <li>Документировать сложные случаи</li>
+                                <li>Предлагать альтернативные решения</li>
+                                <li>Следить за качеством ответов</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-danger">❌ Чего избегать:</h6>
+                            <ul>
+                                <li>Игнорирования обращений</li>
+                                <li>Эмоциональных реакций</li>
+                                <li>Общих фраз без конкретики</li>
+                                <li>Переноса ответственности</li>
+                                <li>Нарушения конфиденциальности</li>
+                                <li>Задержек без объяснения причин</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" id="templates">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-copy me-2"></i>5. Шаблоны ответов
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Готовые шаблоны для типичных ситуаций:</h6>
+                    
+                    <div class="accordion" id="templatesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="template1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTemplate1">
+                                    Шаблон для академических вопросов
+                                </button>
+                            </h2>
+                            <div id="collapseTemplate1" class="accordion-collapse collapse show" data-bs-parent="#templatesAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Уважаемый [Имя студента],</strong></p>
+                                    <p>Спасибо за ваш вопрос о [тема вопроса].</p>
+                                    <p>[Конкретный ответ на вопрос]</p>
+                                    <p>Если у вас возникнут дополнительные вопросы, не стесняйтесь обращаться.</p>
+                                    <p>С уважением,<br>[Ваше имя]</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="template2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTemplate2">
+                                    Шаблон для перенаправления
+                                </button>
+                            </h2>
+                            <div id="collapseTemplate2" class="accordion-collapse collapse" data-bs-parent="#templatesAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Уважаемый [Имя студента],</strong></p>
+                                    <p>Ваш вопрос касается [описание вопроса], что выходит за рамки моей компетенции.</p>
+                                    <p>Рекомендую обратиться к [должность/отдел] по адресу [контактная информация].</p>
+                                    <p>С уважением,<br>[Ваше имя]</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="template3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTemplate3">
+                                    Шаблон для сложных проблем
+                                </button>
+                            </h2>
+                            <div id="collapseTemplate3" class="accordion-collapse collapse" data-bs-parent="#templatesAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>Уважаемый [Имя студента],</strong></p>
+                                    <p>Ваша ситуация требует детального изучения. Я передал ваш вопрос [должность] для рассмотрения.</p>
+                                    <p>Ожидайте ответа в течение [срок].</p>
+                                    <p>С уважением,<br>[Ваше имя]</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" id="troubleshooting">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-tools me-2"></i>6. Решение проблем
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Частые проблемы и их решения:</h6>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Проблема</th>
+                                    <th>Решение</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Не могу войти в систему</td>
+                                    <td>Обратитесь в IT-поддержку: support@witte.ru</td>
+                                </tr>
+                                <tr>
+                                    <td>Не вижу новые обращения</td>
+                                    <td>Обновите страницу или очистите кэш браузера</td>
+                                </tr>
+                                <tr>
+                                    <td>Не могу отправить ответ</td>
+                                    <td>Проверьте подключение к интернету и попробуйте снова</td>
+                                </tr>
+                                <tr>
+                                    <td>Обращение не обновляется</td>
+                                    <td>Подождите несколько минут и обновите страницу</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" id="resources">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-link me-2"></i>7. Полезные ресурсы
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Внутренние ресурсы:</h6>
+                            <ul>
+                                <li><a href="{% url 'teacher_faq' %}">FAQ для преподавателей</a></li>
+                                <li><a href="{% url 'teacher_rules' %}">Правила работы</a></li>
+                                <li><a href="{% url 'dashboard' %}">Панель управления</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Контакты поддержки:</h6>
+                            <ul>
+                                <li>IT-поддержка: support@witte.ru</li>
+                                <li>Техническая помощь: +7 (495) 123-45-67</li>
+                                <li>Администрация: admin@witte.ru</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-compass me-2"></i>Быстрая навигация
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <a href="#getting-started" class="list-group-item list-group-item-action">
+                            <i class="fas fa-rocket me-2"></i>Начало работы
+                        </a>
+                        <a href="#daily-routine" class="list-group-item list-group-item-action">
+                            <i class="fas fa-calendar-day me-2"></i>Ежедневная рутина
+                        </a>
+                        <a href="#response-process" class="list-group-item list-group-item-action">
+                            <i class="fas fa-comments me-2"></i>Процесс ответа
+                        </a>
+                        <a href="#best-practices" class="list-group-item list-group-item-action">
+                            <i class="fas fa-star me-2"></i>Лучшие практики
+                        </a>
+                        <a href="#templates" class="list-group-item list-group-item-action">
+                            <i class="fas fa-copy me-2"></i>Шаблоны ответов
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bolt me-2"></i>Быстрые действия
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary">
+                            <i class="fas fa-inbox me-2"></i>Проверить обращения
+                        </a>
+                        <a href="{% url 'teacher_faq' %}" class="btn btn-info">
+                            <i class="fas fa-question-circle me-2"></i>Открыть FAQ
+                        </a>
+                        <a href="{% url 'teacher_rules' %}" class="btn btn-warning">
+                            <i class="fas fa-gavel me-2"></i>Правила работы
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-download me-2"></i>Скачать плейбук
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Сохраните плейбук для офлайн-использования:</p>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-primary" onclick="window.print()">
+                            <i class="fas fa-print me-2"></i>Распечатать
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="window.print()">
+                            <i class="fas fa-file-pdf me-2"></i>Сохранить как PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

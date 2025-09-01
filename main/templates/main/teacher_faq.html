@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ для преподавателей - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">
+                <i class="fas fa-tachometer-alt me-1"></i>Панель управления
+            </a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <i class="fas fa-question-circle me-1"></i>FAQ для преподавателей
+            </li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h3 mb-0">
+                    <i class="fas fa-question-circle me-2"></i>
+                    FAQ для преподавателей
+                </h1>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Назад к панели
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-list me-2"></i>Часто задаваемые вопросы
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                    Как я узнаю о новых обращениях от студентов?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Новые обращения автоматически появляются в вашей панели управления. Вы можете:</p>
+                                    <ul>
+                                        <li>Проверять панель управления регулярно</li>
+                                        <li>Обращать внимание на счетчик "Требуют ответа"</li>
+                                        <li>Просматривать статус обращений в таблице</li>
+                                    </ul>
+                                    <p><strong>Рекомендация:</strong> Проверяйте панель не реже одного раза в день.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    Какие статусы могут быть у обращений?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6>Статусы обращений:</h6>
+                                            <ul class="list-unstyled">
+                                                <li><span class="badge bg-warning">Ожидает</span> - новое обращение</li>
+                                                <li><span class="badge bg-info">В работе</span> - обращение обрабатывается</li>
+                                                <li><span class="badge bg-success">Завершено</span> - обращение решено</li>
+                                                <li><span class="badge bg-danger">Отклонено</span> - обращение отклонено</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Рекомендуемые действия:</h6>
+                                            <ul>
+                                                <li>Отвечайте на обращения в течение 24 часов</li>
+                                                <li>Обновляйте статус по мере работы</li>
+                                                <li>Используйте "В работе" при начале обработки</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    Как правильно отвечать на обращения?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <h6>Рекомендации по ответам:</h6>
+                                    <ol>
+                                        <li><strong>Быстрота:</strong> Отвечайте в течение 24 часов</li>
+                                        <li><strong>Вежливость:</strong> Используйте уважительный тон</li>
+                                        <li><strong>Конкретность:</strong> Давайте четкие и понятные ответы</li>
+                                        <li><strong>Конструктивность:</strong> Предлагайте решения проблем</li>
+                                        <li><strong>Профессионализм:</strong> Избегайте эмоциональных реакций</li>
+                                    </ol>
+                                    <div class="alert alert-info">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        <strong>Совет:</strong> Сохраняйте копии важных ответов для будущих обращений.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    Что делать, если я не могу решить проблему студента?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <h6>Алгоритм действий:</h6>
+                                    <ol>
+                                        <li><strong>Анализ:</strong> Определите, входит ли проблема в вашу компетенцию</li>
+                                        <li><strong>Консультация:</strong> При необходимости обратитесь к коллегам или администрации</li>
+                                        <li><strong>Перенаправление:</strong> Если проблема не в вашей компетенции, направьте студента к соответствующему специалисту</li>
+                                        <li><strong>Информирование:</strong> Объясните студенту, куда и почему вы его направляете</li>
+                                        <li><strong>Отслеживание:</strong> Убедитесь, что студент получил необходимую помощь</li>
+                                    </ol>
+                                    <div class="alert alert-warning">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>
+                                        <strong>Важно:</strong> Никогда не оставляйте обращение без ответа, даже если не можете решить проблему полностью.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                    Как работать с повторными обращениями?
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <h6>Стратегия работы с повторными обращениями:</h6>
+                                    <ul>
+                                        <li><strong>Анализ истории:</strong> Изучите предыдущие обращения студента</li>
+                                        <li><strong>Выявление причин:</strong> Определите, почему проблема повторяется</li>
+                                        <li><strong>Системный подход:</strong> Предложите долгосрочное решение</li>
+                                        <li><strong>Профилактика:</strong> Дайте рекомендации по предотвращению подобных проблем</li>
+                                        <li><strong>Документирование:</strong> Зафиксируйте принятые меры</li>
+                                    </ul>
+                                    <p><strong>Цель:</strong> Не просто решить текущую проблему, но предотвратить её повторение.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                    Какие обращения можно отклонять?
+                                </button>
+                            </h2>
+                            <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <h6>Основания для отклонения обращений:</h6>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="text-danger">Можно отклонять:</h6>
+                                            <ul>
+                                                <li>Обращения не по вашей компетенции</li>
+                                                <li>Дублирующие обращения</li>
+                                                <li>Обращения с некорректным содержанием</li>
+                                                <li>Спам или реклама</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="text-success">Нельзя отклонять:</h6>
+                                            <ul>
+                                                <li>Академические вопросы</li>
+                                                <li>Проблемы с обучением</li>
+                                                <li>Конструктивные предложения</li>
+                                                <li>Жалобы на качество образования</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-info">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        <strong>Помните:</strong> При отклонении обязательно объясните причину студенту.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bolt me-2"></i>Быстрые действия
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary">
+                            <i class="fas fa-inbox me-2"></i>Проверить обращения
+                        </a>
+                        <a href="{% url 'teacher_playbook' %}" class="btn btn-success">
+                            <i class="fas fa-book-open me-2"></i>Открыть плейбук
+                        </a>
+                        <a href="{% url 'teacher_rules' %}" class="btn btn-warning">
+                            <i class="fas fa-gavel me-2"></i>Правила работы
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-headset me-2"></i>Нужна помощь?
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Если у вас есть вопросы, которые не освещены в FAQ:</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope text-primary me-2"></i>support@witte.ru</li>
+                        <li><i class="fas fa-phone text-primary me-2"></i>+7 (495) 123-45-67</li>
+                        <li><i class="fas fa-clock text-primary me-2"></i>Пн-Пт 9:00-18:00</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

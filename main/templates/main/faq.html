@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">FAQ</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-5">
+                <i class="fas fa-question-circle me-3"></i>
+                Часто задаваемые вопросы
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-question-circle me-2"></i>
+                        Часто задаваемые вопросы
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq1" aria-expanded="true" aria-controls="collapseFaq1">
+                                    Как подать обратную связь преподавателю?
+                                </button>
+                            </h2>
+                            <div id="collapseFaq1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Для подачи обратной связи необходимо войти в систему под своим аккаунтом, перейти в раздел "Отправить обратную связь" и заполнить форму. Вы можете прикрепить файлы и указать преподавателя, которому адресовано обращение.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq2" aria-expanded="false" aria-controls="collapseFaq2">
+                                    Как отследить статус моего обращения?
+                                </button>
+                            </h2>
+                            <div id="collapseFaq2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Войдите в свой аккаунт и перейдите в "Панель управления". Там вы увидите все ваши обращения с указанием их текущего статуса: ожидающие, в работе, завершенные или отклоненные.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq3" aria-expanded="false" aria-controls="collapseFaq3">
+                                    Какие файлы можно прикреплять к обращению?
+                                </button>
+                            </h2>
+                            <div id="collapseFaq3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    К обращению можно прикреплять документы в форматах PDF, DOC, DOCX, изображения (JPG, PNG), а также архивы (ZIP, RAR). Максимальный размер одного файла - 10 МБ.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq4" aria-expanded="false" aria-controls="collapseFaq4">
+                                    Как зарегистрироваться в системе?
+                                </button>
+                            </h2>
+                            <div id="collapseFaq4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    На главной странице нажмите кнопку "Регистрация", заполните форму с вашими данными (имя пользователя, email, пароль и номер студенческого билета). После регистрации вы автоматически получите роль студента.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq5" aria-expanded="false" aria-controls="collapseFaq5">
+                                    Что делать, если я забыл пароль?
+                                </button>
+                            </h2>
+                            <div id="collapseFaq5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Обратитесь к администратору системы или в техническую поддержку университета для восстановления доступа к вашему аккаунту.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq6" aria-expanded="false" aria-controls="collapseFaq6">
+                                    Могу ли я отправить обращение анонимно?
+                                </button>
+                            </h2>
+                            <div id="collapseFaq6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Нет, все обращения в системе привязаны к вашему аккаунту. Это необходимо для отслеживания статуса обращений и обеспечения безопасности системы.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-headset me-2"></i>
+                        Нужна дополнительная помощь?
+                    </h3>
+                </div>
+                <div class="card-body text-center">
+                    <p class="mb-3">Не нашли ответ на свой вопрос? Обратитесь к нам:</p>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-envelope fa-2x text-primary mb-2"></i>
+                            <h5>Email</h5>
+                            <p><a href="mailto:support@witte.ru">support@witte.ru</a></p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-phone fa-2x text-primary mb-2"></i>
+                            <h5>Телефон</h5>
+                            <p><a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-map-marker-alt fa-2x text-primary mb-2"></i>
+                            <h5>Лично</h5>
+                            <p>Каб. 101, 1 этаж</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

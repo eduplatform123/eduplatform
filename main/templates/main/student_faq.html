@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ для студентов - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">
+                <i class="fas fa-tachometer-alt me-1"></i>Панель управления
+            </a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <i class="fas fa-question-circle me-1"></i>FAQ для студентов
+            </li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="h3 mb-0">
+                        <i class="fas fa-question-circle me-2"></i>
+                        Часто задаваемые вопросы для студентов
+                    </h1>
+                </div>
+                <div class="card-body">
+                    <div class="accordion" id="studentFAQ">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                    <i class="fas fa-info-circle me-2 text-primary"></i>
+                                    Общие вопросы
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#studentFAQ">
+                                <div class="accordion-body">
+                                    <div class="mb-4">
+                                        <h5 class="text-primary">Как подать обращение через систему?</h5>
+                                        <p>Для подачи обращения перейдите в раздел "Новое обращение" в панели управления. Заполните форму, указав тему, сообщение и при необходимости прикрепите файлы.</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="text-primary">К кому обращаться с вопросами?</h5>
+                                        <p>Вы можете обращаться к любому преподавателю, который ведет у вас занятия. Выберите соответствующего преподавателя при создании обращения.</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="text-primary">Сколько времени занимает ответ на обращение?</h5>
+                                        <p>Преподаватели обязаны ответить на ваше обращение в течение 3 рабочих дней. В случае срочных вопросов рекомендуется личное обращение.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    <i class="fas fa-cog me-2 text-success"></i>
+                                    Технические вопросы
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#studentFAQ">
+                                <div class="accordion-body">
+                                    <div class="mb-4">
+                                        <h5 class="text-success">Какие файлы можно прикреплять к обращению?</h5>
+                                        <p>Вы можете прикреплять документы в форматах: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, JPG, PNG. Максимальный размер файла - 10 МБ.</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="text-success">Что делать, если не могу войти в систему?</h5>
+                                        <p>Проверьте правильность ввода логина и пароля. Если проблема сохраняется, обратитесь в техническую поддержку университета.</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="text-success">Как изменить пароль?</h5>
+                                        <p>Для изменения пароля перейдите в раздел "Профиль" в панели управления и используйте функцию "Изменить пароль".</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    <i class="fas fa-graduation-cap me-2 text-warning"></i>
+                                    Учебные вопросы
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#studentFAQ">
+                                <div class="accordion-body">
+                                    <div class="mb-4">
+                                        <h5 class="text-warning">Как узнать статус моего обращения?</h5>
+                                        <p>Статус обращения отображается в разделе "Мои обращения". Возможные статусы: "Ожидает рассмотрения", "В работе", "Завершено", "Отклонено".</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="text-warning">Можно ли отозвать отправленное обращение?</h5>
+                                        <p>Отозвать обращение можно только если оно еще не рассмотрено преподавателем. Для этого обратитесь к администратору системы.</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="text-warning">Что делать, если преподаватель не отвечает?</h5>
+                                        <p>Если преподаватель не ответил в течение 3 дней, вы можете обратиться к заведующему кафедрой или в деканат.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    <i class="fas fa-gavel me-2 text-danger"></i>
+                                    Правила и политики
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#studentFAQ">
+                                <div class="accordion-body">
+                                    <div class="mb-4">
+                                        <h5 class="text-danger">Какие обращения не принимаются?</h5>
+                                        <p>Не принимаются обращения, содержащие оскорбления, угрозы, спам или не относящиеся к учебному процессу. Такие обращения будут отклонены.</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="text-danger">Можно ли подавать анонимные обращения?</h5>
+                                        <p>Нет, все обращения должны быть подписаны. Анонимные обращения не рассматриваются.</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="text-danger">Что делать при нарушении правил?</h5>
+                                        <p>При нарушении правил пользования системой ваша учетная запись может быть заблокирована. Обратитесь к администратору для разъяснений.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bolt me-2"></i>Быстрые действия
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'feedback_form' %}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Создать обращение
+                        </a>
+                        <a href="{% url 'view_feedback' %}" class="btn btn-outline-info">
+                            <i class="fas fa-list me-2"></i>Мои обращения
+                        </a>
+                        <a href="{% url 'student_rules' %}" class="btn btn-outline-warning">
+                            <i class="fas fa-gavel me-2"></i>Правила
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="fas fa-phone me-2"></i>Контакты поддержки
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>Техническая поддержка:</strong><br>
+                        <i class="fas fa-envelope me-1"></i>support@university.edu<br>
+                        <i class="fas fa-phone me-1"></i>+7 (495) 123-45-67
+                    </div>
+                    <div class="mb-3">
+                        <strong>Учебная часть:</strong><br>
+                        <i class="fas fa-envelope me-1"></i>academic@university.edu<br>
+                        <i class="fas fa-phone me-1"></i>+7 (495) 123-45-68
+                    </div>
+                    <div>
+                        <strong>Время работы:</strong><br>
+                        Пн-Пт: 9:00 - 18:00<br>
+                        Сб: 9:00 - 14:00
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="fas fa-chart-bar me-2"></i>Статистика
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <div class="border-end">
+                                <h4 class="text-primary mb-1">{{ feedback_forms.count }}</h4>
+                                <small class="text-muted">Обращений</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h4 class="text-success mb-1">{{ completed_count }}</h4>
+                            <small class="text-muted">Завершено</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

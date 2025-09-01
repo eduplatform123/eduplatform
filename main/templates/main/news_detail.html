@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }} - Новости и блог - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'news_list' %}">Новости и блог</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ article.title|truncatewords:5 }}</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="mb-4">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-primary me-3">
+                        {% if article.category == 'news' %}Новости
+                        {% elif article.category == 'blog' %}Блог
+                        {% elif article.category == 'announcement' %}Объявления
+                        {% elif article.category == 'event' %}События
+                        {% else %}{{ article.category|title }}{% endif %}
+                    </span>
+                    <small class="text-muted">
+                        <i class="fas fa-calendar me-1"></i>
+                        {{ article.published_at|date:"d.m.Y H:i" }}
+                    </small>
+                </div>
+                
+                <h1 class="display-5 mb-3">{{ article.title }}</h1>
+                
+                <div class="d-flex align-items-center text-muted mb-4">
+                    <div class="me-4">
+                        <i class="fas fa-user me-1"></i>
+                        {{ article.author.get_full_name|default:article.author.username }}
+                    </div>
+                    <div class="me-4">
+                        <i class="fas fa-eye me-1"></i>
+                        {{ article.views_count }} просмотров
+                    </div>
+                    {% if article.is_featured %}
+                    <div>
+                        <i class="fas fa-star text-warning me-1"></i>
+                        Рекомендуемая статья
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if article.featured_image %}
+            <div class="mb-4">
+                <img src="{{ article.featured_image.url }}" class="img-fluid rounded" alt="{{ article.title }}">
+            </div>
+            {% endif %}
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    {% if article.excerpt %}
+                    <div class="alert alert-light mb-4">
+                        <h5 class="alert-heading">Краткое описание</h5>
+                        <p class="mb-0">{{ article.excerpt }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="article-content">
+                        {{ article.content|safe }}
+                    </div>
+                </div>
+            </div>
+
+            {% if article.tags %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <i class="fas fa-tags me-2"></i>Теги
+                    </h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for tag in article.get_tags_list %}
+                        <span class="badge bg-light text-dark">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'news_list' %}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>К списку новостей
+                </a>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary" onclick="window.print()">
+                        <i class="fas fa-print me-2"></i>Печать
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" onclick="shareArticle()">
+                        <i class="fas fa-share me-2"></i>Поделиться
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            {% if related_articles %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-link me-2"></i>Похожие статьи
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% for related in related_articles %}
+                    <div class="mb-3 pb-3 {% if not forloop.last %}border-bottom{% endif %}">
+                        <h6 class="mb-1">
+                            <a href="{% url 'news_detail' related.slug %}" class="text-decoration-none">
+                                {{ related.title }}
+                            </a>
+                        </h6>
+                        <small class="text-muted">
+                            <i class="fas fa-calendar me-1"></i>
+                            {{ related.published_at|date:"d.m.Y" }}
+                        </small>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-info-circle me-2"></i>Информация о статье
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>Автор:</strong><br>
+                        <span class="text-muted">{{ article.author.get_full_name|default:article.author.username }}</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Дата публикации:</strong><br>
+                        <span class="text-muted">{{ article.published_at|date:"d.m.Y H:i" }}</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Категория:</strong><br>
+                        <span class="text-muted">
+                            {% if article.category == 'news' %}Новости
+                            {% elif article.category == 'blog' %}Блог
+                            {% elif article.category == 'announcement' %}Объявления
+                            {% elif article.category == 'event' %}События
+                            {% else %}{{ article.category|title }}{% endif %}
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Просмотры:</strong><br>
+                        <span class="text-muted">{{ article.views_count }}</span>
+                    </div>
+                    {% if article.is_featured %}
+                    <div>
+                        <strong>Статус:</strong><br>
+                        <span class="badge bg-warning">Рекомендуемая статья</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-link me-2"></i>Быстрые ссылки
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'news_list' %}" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-newspaper me-2"></i>Все новости
+                        </a>
+                        <a href="{% url 'news_list' %}?category={{ article.category }}" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-filter me-2"></i>Больше статей в этой категории
+                        </a>
+                        <a href="{% url 'home' %}" class="btn btn-outline-info btn-sm">
+                            <i class="fas fa-home me-2"></i>На главную
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function shareArticle() {
+    if (navigator.share) {
+        navigator.share({
+            title: '{{ article.title }}',
+            text: '{{ article.excerpt|default:article.title }}',
+            url: window.location.href
+        });
+    } else {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+            alert('Ссылка скопирована в буфер обмена!');
+        });
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}Отправить обратную связь - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-paper-plane me-2"></i>
+                        Отправить обратную связь
+                    </h3>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post" enctype="multipart/form-data" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.teacher.id_for_label }}" class="form-label">
+                                {{ form.teacher.label }}
+                            </label>
+                            {{ form.teacher }}
+                            {% if form.teacher.errors %}
+                                <div class="text-danger small">
+                                    {% for error in form.teacher.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.subject.id_for_label }}" class="form-label">
+                                {{ form.subject.label }}
+                            </label>
+                            {{ form.subject }}
+                            {% if form.subject.errors %}
+                                <div class="text-danger small">
+                                    {% for error in form.subject.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.message.id_for_label }}" class="form-label">
+                                {{ form.message.label }}
+                            </label>
+                            {{ form.message }}
+                            {% if form.message.errors %}
+                                <div class="text-danger small">
+                                    {% for error in form.message.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.attachments.id_for_label }}" class="form-label">
+                                {{ form.attachments.label }}
+                            </label>
+                            <input type="file" name="{{ form.attachments.name }}" id="{{ form.attachments.id_for_label }}" class="form-control" multiple>
+                            <div class="form-text">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Вы можете прикрепить несколько файлов. Максимальный размер файла: 10MB.
+                            </div>
+                            {% if form.attachments.errors %}
+                                <div class="text-danger small">
+                                    {% for error in form.attachments.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {% for error in form.non_field_errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i>
+                                Отправить обратную связь
+                            </button>
+                            <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>
+                                Назад
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

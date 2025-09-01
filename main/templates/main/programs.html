@@ -1,0 +1,394 @@
+{% extends 'base.html' %}
+
+{% block title %}Образовательные программы - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'about' %}">О университете</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Образовательные программы</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="fas fa-graduation-cap me-3"></i>
+                    Образовательные программы
+                </h1>
+                <p class="lead mb-4">
+                    Московский Университет имени С.Ю. Витте предлагает широкий спектр образовательных программ 
+                    для подготовки высококвалифицированных специалистов в различных областях.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-chart-line text-primary me-2"></i>
+                    Экономика и управление
+                </h2>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-chart-pie me-2"></i>
+                            Экономика
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Программа подготовки экономистов широкого профиля для работы в различных 
+                            секторах экономики и финансовой сфере.
+                        </p>
+                        <h6 class="fw-bold">Основные дисциплины:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Микроэкономика и макроэкономика</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Экономическая теория</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Финансы и кредит</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Бухгалтерский учет</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Экономический анализ</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Бакалавриат</span>
+                            <span class="badge bg-info">Магистратура</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-users-cog me-2"></i>
+                            Менеджмент
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Подготовка менеджеров для эффективного управления организациями 
+                            различных форм собственности и отраслей.
+                        </p>
+                        <h6 class="fw-bold">Основные дисциплины:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Теория менеджмента</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Стратегический менеджмент</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Управление персоналом</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Маркетинг</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Проектный менеджмент</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Бакалавриат</span>
+                            <span class="badge bg-info">Магистратура</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-landmark me-2"></i>
+                            Государственное и муниципальное управление
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Подготовка специалистов для работы в органах государственной власти 
+                            и местного самоуправления.
+                        </p>
+                        <h6 class="fw-bold">Основные дисциплины:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Государственная политика</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Муниципальное право</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Управление проектами</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Государственная служба</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Региональная экономика</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Бакалавриат</span>
+                            <span class="badge bg-info">Магистратура</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-laptop-code me-2"></i>
+                            Бизнес-информатика
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Подготовка специалистов в области информационных технологий 
+                            для бизнеса и управления.
+                        </p>
+                        <h6 class="fw-bold">Основные дисциплины:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Программирование</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Базы данных</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Информационные системы</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Электронная коммерция</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Управление IT-проектами</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Бакалавриат</span>
+                            <span class="badge bg-info">Магистратура</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-balance-scale text-primary me-2"></i>
+                    Юриспруденция
+                </h2>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-gavel me-2"></i>
+                            Юриспруденция
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Подготовка юристов для работы в различных сферах правовой деятельности, 
+                            включая судебную систему, адвокатуру и корпоративную практику.
+                        </p>
+                        <h6 class="fw-bold">Основные дисциплины:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Гражданское право</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Уголовное право</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Конституционное право</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Административное право</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Международное право</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Бакалавриат</span>
+                            <span class="badge bg-info">Магистратура</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-shield-alt me-2"></i>
+                            Правоохранительная деятельность
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Подготовка специалистов для работы в правоохранительных органах, 
+                            следственных подразделениях и судебной системе.
+                        </p>
+                        <h6 class="fw-bold">Основные дисциплины:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Криминалистика</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Оперативно-розыскная деятельность</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Уголовный процесс</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Административная деятельность</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Правоохранительные органы</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Бакалавриат</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-search me-2"></i>
+                            Судебная экспертиза
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Подготовка экспертов для проведения различных видов судебных экспертиз 
+                            в гражданском и уголовном судопроизводстве.
+                        </p>
+                        <h6 class="fw-bold">Основные дисциплины:</h6>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Теория судебной экспертизы</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Криминалистическая экспертиза</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Экономическая экспертиза</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Психологическая экспертиза</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Техническая экспертиза</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Бакалавриат</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-plus-circle text-primary me-2"></i>
+                    Дополнительные программы
+                </h2>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-language me-2"></i>
+                            Лингвистика
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Подготовка переводчиков и лингвистов для работы в международных 
+                            организациях и бизнесе.
+                        </p>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Бакалавриат</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">
+                            <i class="fas fa-chalkboard-teacher me-2"></i>
+                            Педагогическое образование
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Подготовка педагогов для работы в образовательных учреждениях 
+                            различного уровня.
+                        </p>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Бакалавриат</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-newspaper me-2"></i>
+                            Журналистика
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Подготовка журналистов для работы в средствах массовой информации 
+                            и PR-агентствах.
+                        </p>
+                        <div class="mt-3">
+                            <span class="badge bg-success">Бакалавриат</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 mb-4">
+                <h2 class="fw-bold">Программы в цифрах</h2>
+                <p class="text-muted">Статистика наших образовательных программ</p>
+            </div>
+        </div>
+        <div class="row g-4 text-center">
+            <div class="col-md-3">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                        <h3 class="fw-bold text-primary">50+</h3>
+                        <p class="text-muted">Образовательных программ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <i class="fas fa-user-graduate fa-3x text-success mb-3"></i>
+                        <h3 class="fw-bold text-success">15,000+</h3>
+                        <p class="text-muted">Выпускников</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <i class="fas fa-chalkboard-teacher fa-3x text-info mb-3"></i>
+                        <h3 class="fw-bold text-info">500+</h3>
+                        <p class="text-muted">Преподавателей</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <i class="fas fa-handshake fa-3x text-warning mb-3"></i>
+                        <h3 class="fw-bold text-warning">95%</h3>
+                        <p class="text-muted">Трудоустройство</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="fw-bold mb-4">Готовы выбрать свою программу?</h2>
+                <p class="lead mb-4">
+                    Подайте заявку на поступление и станьте частью нашего университета. 
+                    Наши специалисты помогут вам выбрать подходящую программу.
+                </p>
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'register' %}" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-user-plus me-2"></i>Подать заявку
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-envelope me-2"></i>Задать вопрос
+                    </a>
+                {% else %}
+                    <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-tachometer-alt me-2"></i>Панель управления
+                    </a>
+                    <a href="{% url 'about' %}" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-info-circle me-2"></i>Узнать больше
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,352 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Отправить обратную связь - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Панель управления</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Отправить обратную связь</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .file-upload-preview {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+    
+    .file-preview-item {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .file-preview-item .file-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .file-preview-item .file-icon {
+        width: 40px;
+        height: 40px;
+        background: #e9ecef;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+    }
+    
+    .file-preview-item .file-details h6 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    .file-preview-item .file-details small {
+        color: #6c757d;
+    }
+    
+    .file-preview-item .remove-file {
+        background: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .file-preview-item .remove-file:hover {
+        background: #c82333;
+        transform: scale(1.1);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="feedback-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="feedback-card slide-up">
+                    <div class="feedback-header">
+                        <h3>
+                            <i class="fas fa-paper-plane me-2"></i>
+                            Отправить обратную связь
+                        </h3>
+                        <p class="mb-0 mt-2 opacity-75">Поделитесь своими вопросами и предложениями с преподавателями</p>
+                    </div>
+                    <div class="feedback-body">
+                        <form method="post" enctype="multipart/form-data" novalidate id="feedbackForm">
+                            {% csrf_token %}
+                            
+                            <div class="mb-4">
+                                <label for="{{ form.teacher.id_for_label }}" class="form-label">
+                                    <i class="fas fa-chalkboard-teacher me-2"></i>{{ form.teacher.label }}
+                                </label>
+                                {{ form.teacher }}
+                                {% if form.teacher.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.teacher.errors %}
+                                            <i class="fas fa-exclamation-circle me-1"></i>{{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="{{ form.subject.id_for_label }}" class="form-label">
+                                    <i class="fas fa-heading me-2"></i>{{ form.subject.label }}
+                                </label>
+                                {{ form.subject }}
+                                {% if form.subject.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.subject.errors %}
+                                            <i class="fas fa-exclamation-circle me-1"></i>{{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="{{ form.message.id_for_label }}" class="form-label">
+                                    <i class="fas fa-comment me-2"></i>{{ form.message.label }}
+                                </label>
+                                {{ form.message }}
+                                {% if form.message.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.message.errors %}
+                                            <i class="fas fa-exclamation-circle me-1"></i>{{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="form-label">
+                                    <i class="fas fa-paperclip me-2"></i>Прикрепить файлы
+                                </label>
+                                
+                                <div class="file-upload-area" id="fileUploadArea">
+                                    <div class="text-center">
+                                        <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
+                                        <h5>Перетащите файлы сюда или нажмите для выбора</h5>
+                                        <p class="text-muted mb-3">Поддерживаемые форматы: PDF, DOC, DOCX, JPG, PNG, ZIP</p>
+                                        <p class="text-muted small">Максимальный размер файла: 10MB</p>
+                                        <input type="file" name="attachments" id="fileInput" class="file-input" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip">
+                                        <label for="fileInput" class="file-label">
+                                            <i class="fas fa-folder-open me-2"></i>Выбрать файлы
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="selected-files mt-3" id="selectedFiles" style="display: none;">
+                                    <h6 class="mb-3">
+                                        <i class="fas fa-list me-2"></i>Выбранные файлы:
+                                    </h6>
+                                    <div class="file-upload-preview" id="filePreview">
+                                    </div>
+                                </div>
+                                
+                                {% if form.attachments.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.attachments.errors %}
+                                            <i class="fas fa-exclamation-circle me-1"></i>{{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger border-0">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    {% for error in form.non_field_errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            
+                            <div class="d-flex gap-3">
+                                <button type="submit" class="btn auth-btn flex-grow-1">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Отправить обратную связь
+                                </button>
+                                <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">
+                                    <i class="fas fa-arrow-left me-2"></i>
+                                    Назад
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('fileInput');
+    const fileUploadArea = document.getElementById('fileUploadArea');
+    const selectedFiles = document.getElementById('selectedFiles');
+    const filePreview = document.getElementById('filePreview');
+    const selectedFilesList = [];
+
+    fileInput.addEventListener('change', function(e) {
+        handleFiles(e.target.files);
+    });
+
+    fileUploadArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        fileUploadArea.classList.add('dragover');
+    });
+
+    fileUploadArea.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        fileUploadArea.classList.remove('dragover');
+    });
+
+    fileUploadArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        fileUploadArea.classList.remove('dragover');
+        handleFiles(e.dataTransfer.files);
+    });
+
+    fileUploadArea.addEventListener('click', function() {
+        fileInput.click();
+    });
+
+    function handleFiles(files) {
+        Array.from(files).forEach(file => {
+            if (validateFile(file)) {
+                addFilePreview(file);
+                selectedFilesList.push(file);
+            }
+        });
+        updateFileInput();
+        updateSelectedFilesDisplay();
+    }
+
+    function validateFile(file) {
+        const maxSize = 10 * 1024 * 1024;
+        const allowedTypes = [
+            'application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'image/jpeg',
+            'image/png',
+            'application/zip'
+        ];
+
+        if (file.size > maxSize) {
+            alert(`Файл "${file.name}" слишком большой. Максимальный размер: 10MB`);
+            return false;
+        }
+
+        if (!allowedTypes.includes(file.type)) {
+            alert(`Файл "${file.name}" имеет неподдерживаемый формат`);
+            return false;
+        }
+
+        return true;
+    }
+
+    function addFilePreview(file) {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-preview-item';
+        fileItem.dataset.filename = file.name;
+
+        const fileIcon = getFileIcon(file.type);
+        const fileSize = formatFileSize(file.size);
+
+        fileItem.innerHTML = `
+            <div class="file-info">
+                <div class="file-icon">
+                    <i class="${fileIcon}"></i>
+                </div>
+                <div class="file-details">
+                    <h6>${file.name}</h6>
+                    <small>${fileSize}</small>
+                </div>
+            </div>
+            <button type="button" class="remove-file" onclick="removeFile('${file.name}')">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+
+        filePreview.appendChild(fileItem);
+    }
+
+    function getFileIcon(fileType) {
+        const iconMap = {
+            'application/pdf': 'fas fa-file-pdf',
+            'application/msword': 'fas fa-file-word',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'fas fa-file-word',
+            'image/jpeg': 'fas fa-file-image',
+            'image/png': 'fas fa-file-image',
+            'application/zip': 'fas fa-file-archive'
+        };
+        return iconMap[fileType] || 'fas fa-file';
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    function removeFile(filename) {
+        const index = selectedFilesList.findIndex(file => file.name === filename);
+        if (index > -1) {
+            selectedFilesList.splice(index, 1);
+        }
+        
+        const fileItem = document.querySelector(`[data-filename="${filename}"]`);
+        if (fileItem) {
+            fileItem.remove();
+        }
+        
+        updateFileInput();
+        updateSelectedFilesDisplay();
+    }
+
+    function updateFileInput() {
+        const dt = new DataTransfer();
+        selectedFilesList.forEach(file => dt.items.add(file));
+        fileInput.files = dt.files;
+    }
+
+    function updateSelectedFilesDisplay() {
+        if (selectedFilesList.length > 0) {
+            selectedFiles.style.display = 'block';
+        } else {
+            selectedFiles.style.display = 'none';
+        }
+    }
+
+    window.removeFile = removeFile;
+});
+</script>
+{% endblock %}

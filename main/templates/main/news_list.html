@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+
+{% block title %}Новости и блог - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Новости и блог</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="display-4 mb-3">
+                <i class="fas fa-newspaper me-3"></i>
+                Новости и блог
+            </h1>
+            <p class="lead text-muted">Будьте в курсе последних событий и новостей нашего университета</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="get" class="row g-3">
+                        <div class="col-md-6">
+                            <label for="search" class="form-label">Поиск</label>
+                            <input type="text" class="form-control" id="search" name="search" 
+                                   value="{{ search_query }}" placeholder="Поиск по заголовку, содержанию...">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="category" class="form-label">Категория</label>
+                            <select class="form-select" id="category" name="category">
+                                <option value="">Все категории</option>
+                                {% for category in categories %}
+                                    <option value="{{ category }}" {% if category == current_category %}selected{% endif %}>
+                                        {% if category == 'news' %}Новости
+                                        {% elif category == 'blog' %}Блог
+                                        {% elif category == 'announcement' %}Объявления
+                                        {% elif category == 'event' %}События
+                                        {% else %}{{ category|title }}{% endif %}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">&nbsp;</label>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-search me-2"></i>Найти
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if featured_articles %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="h3 mb-4">
+                <i class="fas fa-star me-2 text-warning"></i>
+                Рекомендуемые статьи
+            </h2>
+        </div>
+        {% for article in featured_articles %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                {% if article.featured_image %}
+                <img src="{{ article.featured_image.url }}" class="card-img-top" alt="{{ article.title }}" style="height: 200px; object-fit: cover;">
+                {% else %}
+                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                    <i class="fas fa-newspaper fa-3x text-muted"></i>
+                </div>
+                {% endif %}
+                <div class="card-body">
+                    <div class="mb-2">
+                        <span class="badge bg-primary me-2">
+                            {% if article.category == 'news' %}Новости
+                            {% elif article.category == 'blog' %}Блог
+                            {% elif article.category == 'announcement' %}Объявления
+                            {% elif article.category == 'event' %}События
+                            {% else %}{{ article.category|title }}{% endif %}
+                        </span>
+                        <small class="text-muted">
+                            <i class="fas fa-calendar me-1"></i>
+                            {{ article.published_at|date:"d.m.Y" }}
+                        </small>
+                    </div>
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    {% if article.excerpt %}
+                    <p class="card-text text-muted">{{ article.excerpt|truncatewords:20 }}</p>
+                    {% endif %}
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="{% url 'news_detail' article.slug %}" class="btn btn-outline-primary btn-sm">
+                            Читать далее
+                        </a>
+                        <small class="text-muted">
+                            <i class="fas fa-eye me-1"></i>{{ article.views_count }}
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-12">
+            <h2 class="h3 mb-4">
+                <i class="fas fa-clock me-2 text-info"></i>
+                Последние публикации
+            </h2>
+        </div>
+        {% if recent_articles %}
+            {% for article in recent_articles %}
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-secondary">
+                                {% if article.category == 'news' %}Новости
+                                {% elif article.category == 'blog' %}Блог
+                                {% elif article.category == 'announcement' %}Объявления
+                                {% elif article.category == 'event' %}События
+                                {% else %}{{ article.category|title }}{% endif %}
+                            </span>
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>
+                                {{ article.published_at|date:"d.m.Y" }}
+                            </small>
+                        </div>
+                        <h5 class="card-title">
+                            <a href="{% url 'news_detail' article.slug %}" class="text-decoration-none">
+                                {{ article.title }}
+                            </a>
+                        </h5>
+                        {% if article.excerpt %}
+                        <p class="card-text text-muted">{{ article.excerpt|truncatewords:25 }}</p>
+                        {% endif %}
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-user me-1"></i>{{ article.author.get_full_name|default:article.author.username }}
+                            </small>
+                            <small class="text-muted">
+                                <i class="fas fa-eye me-1"></i>{{ article.views_count }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="fas fa-newspaper fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">Пока нет опубликованных статей</h5>
+                    <p class="text-muted">Следите за обновлениями нашего сайта</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    {% if categories %}
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-tags me-2"></i>
+                        Категории
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="{% url 'news_list' %}" class="btn btn-outline-primary btn-sm">
+                            Все категории
+                        </a>
+                        {% for category in categories %}
+                        <a href="{% url 'news_list' %}?category={{ category }}" 
+                           class="btn btn-outline-secondary btn-sm {% if category == current_category %}active{% endif %}">
+                            {% if category == 'news' %}Новости
+                            {% elif category == 'blog' %}Блог
+                            {% elif category == 'announcement' %}Объявления
+                            {% elif category == 'event' %}События
+                            {% else %}{{ category|title }}{% endif %}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

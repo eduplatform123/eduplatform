@@ -1,0 +1,348 @@
+{% extends 'base.html' %}
+
+{% block title %}Наша миссия - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Наша миссия</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="fas fa-bullseye me-3"></i>
+                    Наша миссия
+                </h1>
+                <p class="lead mb-4">
+                    Московский Университет имени С.Ю. Витте стремится к формированию будущих лидеров 
+                    и специалистов, способных внести значительный вклад в развитие экономики и общества.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-star text-warning fa-3x mb-3"></i>
+                            <h2 class="fw-bold">Миссия университета</h2>
+                        </div>
+                        <p class="lead text-center mb-4">
+                            <em>
+                                "Формировать высококвалифицированных специалистов, обладающих глубокими знаниями, 
+                                практическими навыками и нравственными ценностями, способных эффективно решать 
+                                сложные задачи в условиях современной экономики и вносить вклад в развитие общества."
+                            </em>
+                        </p>
+                        <div class="row mt-5">
+                            <div class="col-md-6 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-graduation-cap fa-2x text-primary me-3 mt-1"></i>
+                                    <div>
+                                        <h5 class="fw-bold">Образование</h5>
+                                        <p class="text-muted">Предоставление качественного образования, соответствующего международным стандартам</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-lightbulb fa-2x text-warning me-3 mt-1"></i>
+                                    <div>
+                                        <h5 class="fw-bold">Инновации</h5>
+                                        <p class="text-muted">Внедрение инновационных подходов в образовательный процесс</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-handshake fa-2x text-success me-3 mt-1"></i>
+                                    <div>
+                                        <h5 class="fw-bold">Партнерство</h5>
+                                        <p class="text-muted">Развитие сотрудничества с работодателями и международными партнерами</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-users fa-2x text-info me-3 mt-1"></i>
+                                    <div>
+                                        <h5 class="fw-bold">Сообщество</h5>
+                                        <p class="text-muted">Создание инклюзивного образовательного сообщества</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold">
+                        <i class="fas fa-eye text-primary me-2"></i>
+                        Наше видение
+                    </h2>
+                    <p class="lead">Стремимся стать ведущим университетом России в области экономического образования</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center p-4">
+                                <i class="fas fa-globe fa-3x text-primary mb-3"></i>
+                                <h5 class="fw-bold">Глобальное признание</h5>
+                                <p class="text-muted">
+                                    Достижение международного признания как центра excellence 
+                                    в экономическом образовании и научных исследованиях.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center p-4">
+                                <i class="fas fa-rocket fa-3x text-success mb-3"></i>
+                                <h5 class="fw-bold">Технологическое лидерство</h5>
+                                <p class="text-muted">
+                                    Внедрение передовых технологий в образовательный процесс 
+                                    и развитие цифровых компетенций у студентов.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center p-4">
+                                <i class="fas fa-heart fa-3x text-danger mb-3"></i>
+                                <h5 class="fw-bold">Социальная ответственность</h5>
+                                <p class="text-muted">
+                                    Воспитание социально ответственных лидеров, готовых 
+                                    решать глобальные вызовы современности.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold">
+                        <i class="fas fa-heart text-danger me-2"></i>
+                        Наши ценности
+                    </h2>
+                    <p class="lead">Основополагающие принципы, которые определяют нашу деятельность</p>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+                                <i class="fas fa-award fa-2x text-primary"></i>
+                            </div>
+                            <h4 class="mb-0">Качество</h4>
+                        </div>
+                        <p class="card-text">
+                            Мы стремимся к высочайшему качеству во всем, что делаем: в образовании, 
+                            исследованиях и обслуживании студентов. Качество - это не просто стандарт, 
+                            а наша повседневная практика.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Аккредитованные программы</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Международные стандарты</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Постоянное совершенствование</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-10 p-3 rounded me-3">
+                                <i class="fas fa-leaf fa-2x text-success"></i>
+                            </div>
+                            <h4 class="mb-0">Инновации</h4>
+                        </div>
+                        <p class="card-text">
+                            Мы поощряем творческий подход и инновационное мышление. Наши студенты 
+                            учатся не только применять существующие знания, но и создавать новые решения 
+                            для будущих вызовов.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Современные технологии</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Творческий подход</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Экспериментальные методы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-info bg-opacity-10 p-3 rounded me-3">
+                                <i class="fas fa-hands-helping fa-2x text-info"></i>
+                            </div>
+                            <h4 class="mb-0">Сотрудничество</h4>
+                        </div>
+                        <p class="card-text">
+                            Мы верим в силу партнерства и совместной работы. Сотрудничество с 
+                            работодателями, другими университетами и международными организациями 
+                            обогащает наш образовательный опыт.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Международные партнерства</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Связь с работодателями</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Междисциплинарный подход</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-warning bg-opacity-10 p-3 rounded me-3">
+                                <i class="fas fa-balance-scale fa-2x text-warning"></i>
+                            </div>
+                            <h4 class="mb-0">Честность</h4>
+                        </div>
+                        <p class="card-text">
+                            Мы поддерживаем высочайшие стандарты академической честности и этики. 
+                            Наши студенты учатся принимать ответственные решения и действовать 
+                            в соответствии с моральными принципами.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Академическая честность</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Этические принципы</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Прозрачность</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold">
+                        <i class="fas fa-target text-primary me-2"></i>
+                        Наши цели
+                    </h2>
+                    <p class="lead">Конкретные задачи, которые мы ставим перед собой</p>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body p-4">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-graduation-cap fa-2x text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold">Образовательное превосходство</h5>
+                        <p class="text-muted">Обеспечить высочайшее качество образования и подготовить конкурентоспособных специалистов</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body p-4">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-microscope fa-2x text-success"></i>
+                        </div>
+                        <h5 class="fw-bold">Научные достижения</h5>
+                        <p class="text-muted">Проводить передовые исследования и внедрять инновационные решения</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body p-4">
+                        <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-globe fa-2x text-info"></i>
+                        </div>
+                        <h5 class="fw-bold">Международное сотрудничество</h5>
+                        <p class="text-muted">Расширять международные связи и программы обмена</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <div class="card-body p-4">
+                        <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="fas fa-users fa-2x text-warning"></i>
+                        </div>
+                        <h5 class="fw-bold">Социальное влияние</h5>
+                        <p class="text-muted">Вносить вклад в развитие общества и экономики региона</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="fw-bold mb-4">Присоединяйтесь к нашей миссии</h2>
+                <p class="lead mb-4">
+                    Станьте частью университета, который не только дает образование, 
+                    но и формирует будущих лидеров и новаторов.
+                </p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    {% if not user.is_authenticated %}
+                        <a href="{% url 'register' %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-user-plus me-2"></i>Подать заявку
+                        </a>
+                        <a href="{% url 'programs' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-graduation-cap me-2"></i>Наши программы
+                        </a>
+                    {% else %}
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-tachometer-alt me-2"></i>Панель управления
+                        </a>
+                        <a href="{% url 'about' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-info-circle me-2"></i>Узнать больше
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

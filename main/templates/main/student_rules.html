@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+
+{% block title %}Правила для студентов - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">
+                <i class="fas fa-tachometer-alt me-1"></i>Панель управления
+            </a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <i class="fas fa-gavel me-1"></i>Правила для студентов
+            </li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <h1 class="h3 mb-0">
+                        <i class="fas fa-gavel me-2"></i>
+                        Правила работы с системой обратной связи
+                    </h1>
+                </div>
+                <div class="card-body">
+                    <div class="mb-5">
+                        <h3 class="text-primary mb-3">
+                            <i class="fas fa-info-circle me-2"></i>Общие правила
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card border-primary mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">
+                                            <i class="fas fa-check-circle me-2"></i>Разрешено
+                                        </h5>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="fas fa-arrow-right me-2 text-success"></i>Вопросы по учебному материалу</li>
+                                            <li class="mb-2"><i class="fas fa-arrow-right me-2 text-success"></i>Консультации по заданиям</li>
+                                            <li class="mb-2"><i class="fas fa-arrow-right me-2 text-success"></i>Уточнения по расписанию</li>
+                                            <li class="mb-2"><i class="fas fa-arrow-right me-2 text-success"></i>Технические вопросы</li>
+                                            <li class="mb-2"><i class="fas fa-arrow-right me-2 text-success"></i>Обращения по оценкам</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card border-danger mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-danger">
+                                            <i class="fas fa-times-circle me-2"></i>Запрещено
+                                        </h5>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="fas fa-arrow-right me-2 text-danger"></i>Оскорбления и угрозы</li>
+                                            <li class="mb-2"><i class="fas fa-arrow-right me-2 text-danger"></i>Спам и реклама</li>
+                                            <li class="mb-2"><i class="fas fa-arrow-right me-2 text-danger"></i>Личные вопросы</li>
+                                            <li class="mb-2"><i class="fas fa-arrow-right me-2 text-danger"></i>Анонимные обращения</li>
+                                            <li class="mb-2"><i class="fas fa-arrow-right me-2 text-danger"></i>Множественные дубли</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <h3 class="text-info mb-3">
+                            <i class="fas fa-clock me-2"></i>Сроки ответов
+                        </h3>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-info">
+                                    <tr>
+                                        <th>Тип обращения</th>
+                                        <th>Срок ответа</th>
+                                        <th>Примечание</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Обычные вопросы</strong></td>
+                                        <td><span class="badge bg-warning">3 рабочих дня</span></td>
+                                        <td>Вопросы по учебному материалу, заданиям</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Срочные вопросы</strong></td>
+                                        <td><span class="badge bg-info">1 рабочий день</span></td>
+                                        <td>Технические проблемы, срочные уточнения</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Жалобы</strong></td>
+                                        <td><span class="badge bg-primary">5 рабочих дней</span></td>
+                                        <td>Требуют дополнительной проверки</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <h3 class="text-success mb-3">
+                            <i class="fas fa-comments me-2"></i>Правила общения
+                        </h3>
+                        <div class="alert alert-success">
+                            <h5><i class="fas fa-lightbulb me-2"></i>Рекомендации по составлению обращений:</h5>
+                            <ul class="mb-0">
+                                <li>Четко формулируйте тему обращения</li>
+                                <li>Описывайте проблему подробно, но лаконично</li>
+                                <li>Прикрепляйте необходимые файлы</li>
+                                <li>Используйте вежливый тон</li>
+                                <li>Указывайте контекст (предмет, группа, дата)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <h3 class="text-warning mb-3">
+                            <i class="fas fa-tasks me-2"></i>Статусы обращений
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <i class="fas fa-clock fa-2x text-warning mb-2"></i>
+                                        <h6>Ожидает рассмотрения</h6>
+                                        <small class="text-muted">Обращение отправлено</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <i class="fas fa-spinner fa-2x text-info mb-2"></i>
+                                        <h6>В работе</h6>
+                                        <small class="text-muted">Преподаватель отвечает</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                                        <h6>Завершено</h6>
+                                        <small class="text-muted">Вопрос решен</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <i class="fas fa-times-circle fa-2x text-danger mb-2"></i>
+                                        <h6>Отклонено</h6>
+                                        <small class="text-muted">Нарушение правил</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <h3 class="text-danger mb-3">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Нарушения и санкции
+                        </h3>
+                        <div class="alert alert-danger">
+                            <h5><i class="fas fa-gavel me-2"></i>Меры воздействия за нарушения:</h5>
+                            <ul class="mb-0">
+                                <li><strong>Первое нарушение:</strong> Предупреждение</li>
+                                <li><strong>Второе нарушение:</strong> Временная блокировка (3 дня)</li>
+                                <li><strong>Третье нарушение:</strong> Блокировка на месяц</li>
+                                <li><strong>Систематические нарушения:</strong> Постоянная блокировка</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <h3 class="text-primary mb-3">
+                            <i class="fas fa-star me-2"></i>Контроль качества
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card border-primary">
+                                    <div class="card-header bg-primary text-white">
+                                        <h5 class="mb-0"><i class="fas fa-thumbs-up me-2"></i>Хорошие обращения</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Четкая формулировка</li>
+                                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Вежливый тон</li>
+                                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Прикрепленные файлы</li>
+                                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Конкретный вопрос</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card border-warning">
+                                    <div class="card-header bg-warning text-dark">
+                                        <h5 class="mb-0"><i class="fas fa-thumbs-down me-2"></i>Плохие обращения</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Неясная формулировка</li>
+                                            <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Грубый тон</li>
+                                            <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Отсутствие контекста</li>
+                                            <li class="mb-2"><i class="fas fa-times text-danger me-2"></i>Множественные вопросы</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="fas fa-book me-2"></i>Быстрая справка
+                    </5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>Максимальный размер файла:</strong><br>
+                        <span class="badge bg-info">10 МБ</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Допустимые форматы:</strong><br>
+                        <small class="text-muted">PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, JPG, PNG</small>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Время работы системы:</strong><br>
+                        <small class="text-muted">24/7</small>
+                    </div>
+                    <div>
+                        <strong>Ответственное лицо:</strong><br>
+                        <small class="text-muted">Заведующий кафедрой</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bolt me-2"></i>Быстрые действия
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'feedback_form' %}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Создать обращение
+                        </a>
+                        <a href="{% url 'view_feedback' %}" class="btn btn-outline-info">
+                            <i class="fas fa-list me-2"></i>Мои обращения
+                        </a>
+                        <a href="{% url 'student_faq' %}" class="btn btn-outline-success">
+                            <i class="fas fa-question-circle me-2"></i>FAQ
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="fas fa-phone me-2"></i>Контакты
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>Заведующий кафедрой:</strong><br>
+                        <i class="fas fa-envelope me-1"></i>head@university.edu<br>
+                        <i class="fas fa-phone me-1"></i>+7 (495) 123-45-69
+                    </div>
+                    <div class="mb-3">
+                        <strong>Деканат:</strong><br>
+                        <i class="fas fa-envelope me-1"></i>dean@university.edu<br>
+                        <i class="fas fa-phone me-1"></i>+7 (495) 123-45-70
+                    </div>
+                    <div>
+                        <strong>Время приема:</strong><br>
+                        Пн-Пт: 10:00 - 17:00<br>
+                        Перерыв: 13:00 - 14:00
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

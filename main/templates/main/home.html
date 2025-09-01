@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    Платформа взаимодействия студентов и преподавателей
+                </h1>
+                <p class="lead mb-4">
+                    Московский Университет имени С.Ю. Витте представляет современную платформу 
+                    для эффективного взаимодействия между студентами и преподавателями.
+                </p>
+                {% if not user.is_authenticated %}
+                    <div class="d-flex gap-3">
+                        <a href="{% url 'register' %}" class="btn btn-light btn-lg">
+                            <i class="fas fa-user-plus me-2"></i>Регистрация
+                        </a>
+                        <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-sign-in-alt me-2"></i>Войти
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="d-flex gap-3">
+                        <a href="{% url 'dashboard' %}" class="btn btn-light btn-lg">
+                            <i class="fas fa-tachometer-alt me-2"></i>Панель управления
+                        </a>
+                        {% if user.profile.user_type == 'student' %}
+                            <a href="{% url 'feedback_form' %}" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Отправить обратную связь
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-6 text-center">
+                <i class="fas fa-graduation-cap" style="font-size: 200px; opacity: 0.3;"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Возможности платформы</h2>
+                <p class="text-muted">Инновационные инструменты для улучшения образовательного процесса</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <div class="card-body">
+                        <i class="fas fa-comments fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Обратная связь</h5>
+                        <p class="card-text">
+                            Студенты могут отправлять вопросы и получать ответы от преподавателей 
+                            в удобном формате с возможностью прикрепления файлов.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <div class="card-body">
+                        <i class="fas fa-file-upload fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Файловые вложения</h5>
+                        <p class="card-text">
+                            Возможность прикрепления документов, презентаций и других материалов 
+                            к формам обратной связи для более детального обсуждения.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <div class="card-body">
+                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Отслеживание статуса</h5>
+                        <p class="card-text">
+                            Система отслеживания статуса обращений с уведомлениями 
+                            о ходе рассмотрения и ответах преподавателей.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-4">Московский Университет имени С.Ю. Витте</h2>
+                <p class="lead mb-4">
+                    Один из ведущих университетов России, специализирующийся на экономическом образовании 
+                    и подготовке высококвалифицированных специалистов для различных отраслей экономики.
+                </p>
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-users fa-2x text-primary me-3"></i>
+                            <div>
+                                <h5 class="mb-0">15,000+</h5>
+                                <small class="text-muted">Студентов</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-chalkboard-teacher fa-2x text-primary me-3"></i>
+                            <div>
+                                <h5 class="mb-0">500+</h5>
+                                <small class="text-muted">Преподавателей</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a href="{% url 'about' %}" class="btn btn-primary">
+                        <i class="fas fa-info-circle me-2"></i>Узнать больше
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <h5 class="card-title mb-3">
+                            <i class="fas fa-info-circle text-primary me-2"></i>
+                            О нас
+                        </h5>
+                        <p class="card-text">
+                            Московский Университет имени С.Ю. Витте - это современное образовательное учреждение, 
+                            которое стремится к инновациям в образовании и подготовке специалистов для экономики будущего.
+                        </p>
+                        <a href="{% url 'advantages' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-star me-2"></i>Наши преимущества
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="fw-bold mb-4">Готовы начать?</h2>
+                <p class="lead mb-4">
+                    Присоединяйтесь к нашей образовательной платформе и улучшите процесс взаимодействия 
+                    между студентами и преподавателями.
+                </p>
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'register' %}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-rocket me-2"></i>Начать сейчас
+                    </a>
+                {% else %}
+                    <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-tachometer-alt me-2"></i>Перейти в панель управления
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

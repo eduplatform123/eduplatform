@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block title %}О университете - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">О университете</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-5">
+                <i class="fas fa-university me-3"></i>
+                О Московском Университете имени С.Ю. Витте
+            </h1>
+        </div>
+    </div>
+
+    {% if info %}
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        {{ info.content|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">История университета</h2>
+                        <p class="lead">
+                            Московский Университет имени С.Ю. Витте – один из ведущих университетов России, 
+                            специализирующийся на экономическом образовании и подготовке высококвалифицированных 
+                            специалистов для различных отраслей экономики.
+                        </p>
+                        <p>
+                            Университет был основан в 1993 году и назван в честь Сергея Юльевича Витте – 
+                            выдающегося государственного деятеля России конца XIX – начала XX века, 
+                            министра финансов и председателя Совета министров Российской империи.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Наши преимущества</h2>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Качественное образование</h5>
+                    <p class="card-text">
+                        Современные образовательные программы, соответствующие международным стандартам 
+                        и требованиям работодателей.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Опытные преподаватели</h5>
+                    <p class="card-text">
+                        Высококвалифицированный преподавательский состав с богатым опытом работы 
+                        в академической и практической сферах.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="fas fa-handshake fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">Связь с работодателями</h5>
+                    <p class="card-text">
+                        Тесное сотрудничество с ведущими компаниями и организациями для обеспечения 
+                        практической направленности обучения.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title mb-3">
+                        <i class="fas fa-graduation-cap text-primary me-2"></i>
+                        Образовательные программы
+                    </h3>
+                    <p class="card-text lead">
+                        Изучите наши образовательные программы и выберите направление, которое подходит именно вам.
+                    </p>
+                    <a href="{% url 'programs' %}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-arrow-right me-2"></i>Посмотреть программы
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Университет в цифрах</h2>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-users fa-2x text-primary mb-2"></i>
+                    <h3 class="card-title">15,000+</h3>
+                    <p class="card-text">Студентов</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-chalkboard-teacher fa-2x text-primary mb-2"></i>
+                    <h3 class="card-title">500+</h3>
+                    <p class="card-text">Преподавателей</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-graduation-cap fa-2x text-primary mb-2"></i>
+                    <h3 class="card-title">50+</h3>
+                    <p class="card-text">Образовательных программ</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <i class="fas fa-building fa-2x text-primary mb-2"></i>
+                    <h3 class="card-title">30</h3>
+                    <p class="card-text">Лет опыта</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

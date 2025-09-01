@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Московский Университет имени С.Ю. Витте{% endblock %}</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    
+    <style>
+        html, body {
+            height: 100%;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        main {
+            flex: 1 0 auto;
+        }
+        
+        .footer {
+            flex-shrink: 0;
+            background-color: #343a40;
+            color: #ffffff;
+            border-top: 1px solid #495057;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+        
+        .footer h5, .footer h6 {
+            color: #ffffff;
+        }
+        
+        .footer p, .footer small {
+            color: #ced4da;
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <i class="fas fa-university me-2"></i>
+                МУ им. С.Ю. Витте
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Главная</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Об университете
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="{% url 'about' %}">
+                                <i class="fas fa-info-circle me-2"></i>О нас
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'mission' %}">
+                                <i class="fas fa-bullseye me-2"></i>Миссия
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'advantages' %}">
+                                <i class="fas fa-star me-2"></i>Преимущества
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'programs' %}">
+                                <i class="fas fa-graduation-cap me-2"></i>Программы
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Контакты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'news_list' %}">Новости</a>
+                    </li>
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'public_feedback' %}">Обратная связь</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user me-1"></i>{{ user.get_full_name|default:user.username }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% if user.profile.user_type != 'admin' %}
+                                    <li><a class="dropdown-item" href="{% url 'dashboard' %}">Панель управления</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item" href="{% url 'profile' %}">Профиль</a></li>
+                                {% if user.profile.user_type == 'student' %}
+                                    <li><a class="dropdown-item" href="{% url 'feedback_form' %}">Отправить обратную связь</a></li>
+                                {% endif %}
+                                {% if user.profile.user_type == 'admin' %}
+                                    <li><a class="dropdown-item" href="{% url 'admin_dashboard' %}">Админ панель</a></li>
+                                {% endif %}
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Выйти</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Войти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block breadcrumbs %}{% endblock %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Московский Университет имени С.Ю. Витте</h5>
+                    <p>Платформа для взаимодействия студентов и преподавателей</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h6>Контакты</h6>
+                    <p>Email: info@witte.ru<br>
+                    Телефон: +7 (495) 123-45-67</p>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="text-center">
+                <small>&copy; 2025 Московский Университет имени С.Ю. Витте. Все права защищены.</small>
+                <br>
+                <small>Мелкоступова Тереза Александровна</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

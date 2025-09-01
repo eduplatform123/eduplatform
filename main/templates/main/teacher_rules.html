@@ -1,0 +1,411 @@
+{% extends 'base.html' %}
+
+{% block title %}Правила для преподавателей - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">
+                <i class="fas fa-tachometer-alt me-1"></i>Панель управления
+            </a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <i class="fas fa-gavel me-1"></i>Правила для преподавателей
+            </li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h3 mb-0">
+                    <i class="fas fa-gavel me-2"></i>
+                    Правила для преподавателей
+                </h1>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Назад к панели
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-book me-2"></i>Общие правила работы
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Основные принципы:</h6>
+                    <ol>
+                        <li><strong>Профессионализм:</strong> Всегда поддерживайте высокий уровень профессиональной этики</li>
+                        <li><strong>Конфиденциальность:</strong> Не разглашайте личную информацию студентов</li>
+                        <li><strong>Объективность:</strong> Оценивайте обращения беспристрастно и справедливо</li>
+                        <li><strong>Ответственность:</strong> Берете на себя ответственность за качество ответов</li>
+                        <li><strong>Коллегиальность:</strong> При необходимости консультируйтесь с коллегами</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">
+                        <i class="fas fa-clock me-2"></i>Временные рамки ответов
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-danger">Срочные обращения (24 часа):</h6>
+                            <ul>
+                                <li>Академические вопросы</li>
+                                <li>Проблемы с доступом к материалам</li>
+                                <li>Технические вопросы</li>
+                                <li>Жалобы на качество обучения</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-warning">Обычные обращения (48 часов):</h6>
+                            <ul>
+                                <li>Общие вопросы</li>
+                                <li>Консультации</li>
+                                <li>Предложения по улучшению</li>
+                                <li>Информационные запросы</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Важно:</strong> Если вы не можете ответить в установленные сроки, обязательно уведомите студента о причине задержки.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-comments me-2"></i>Правила коммуникации
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Требования к ответам:</h6>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-success">✅ Обязательные элементы:</h6>
+                            <ul>
+                                <li>Приветствие по имени</li>
+                                <li>Благодарность за обращение</li>
+                                <li>Четкий ответ на вопрос</li>
+                                <li>Конкретные рекомендации</li>
+                                <li>Предложение дополнительной помощи</li>
+                                <li>Профессиональная подпись</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-danger">❌ Запрещено:</h6>
+                            <ul>
+                                <li>Использование неформального языка</li>
+                                <li>Эмоциональные реакции</li>
+                                <li>Обвинения в адрес студента</li>
+                                <li>Разглашение личной информации</li>
+                                <li>Игнорирование вопросов</li>
+                                <li>Перенос ответственности</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-tasks me-2"></i>Правила управления статусами
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Когда и как менять статусы:</h6>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Статус</th>
+                                    <th>Когда использовать</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="badge bg-warning">Ожидает</span></td>
+                                    <td>Новое обращение</td>
+                                    <td>Прочитать и проанализировать</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-info">В работе</span></td>
+                                    <td>Начали работу с обращением</td>
+                                    <td>Подготовить ответ</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-success">Завершено</span></td>
+                                    <td>Ответ отправлен</td>
+                                    <td>Проверить удовлетворенность</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge bg-danger">Отклонено</span></td>
+                                    <td>Обращение не по компетенции</td>
+                                    <td>Объяснить причину</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-shield-alt me-2"></i>Правила конфиденциальности
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Защита персональных данных:</h6>
+                    
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Строго запрещено:</strong>
+                    </div>
+                    
+                    <ul>
+                        <li>Разглашать личную информацию студентов третьим лицам</li>
+                        <li>Использовать данные студентов в личных целях</li>
+                        <li>Передавать доступ к системе другим лицам</li>
+                        <li>Сохранять обращения вне системы</li>
+                        <li>Обсуждать обращения в публичных местах</li>
+                    </ul>
+                    
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Обязательно:</strong> Все обращения должны обрабатываться только через официальную систему.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">
+                        <i class="fas fa-arrow-up me-2"></i>Правила эскалации
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Когда передавать обращение вышестоящим:</h6>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="text-danger">Срочная эскалация:</h6>
+                            <ul>
+                                <li>Жалобы на дискриминацию</li>
+                                <li>Проблемы с безопасностью</li>
+                                <li>Нарушения академической честности</li>
+                                <li>Конфликты между студентами</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-warning">Обычная эскалация:</h6>
+                            <ul>
+                                <li>Вопросы не по вашей компетенции</li>
+                                <li>Сложные академические споры</li>
+                                <li>Системные проблемы</li>
+                                <li>Предложения по изменениям</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Процедура эскалации:</strong> Уведомите студента о передаче обращения и укажите сроки ответа.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-check-circle me-2"></i>Контроль качества
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Критерии оценки качества ответов:</h6>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Качественный ответ включает:</h6>
+                            <ul>
+                                <li>Полноту информации</li>
+                                <li>Точность данных</li>
+                                <li>Понятность изложения</li>
+                                <li>Конструктивность</li>
+                                <li>Профессионализм</li>
+                                <li>Соблюдение сроков</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Регулярная самопроверка:</h6>
+                            <ul>
+                                <li>Анализ статистики ответов</li>
+                                <li>Оценка удовлетворенности</li>
+                                <li>Изучение повторяющихся проблем</li>
+                                <li>Обновление знаний</li>
+                                <li>Консультации с коллегами</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-ban me-2"></i>Нарушения и санкции
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>Последствия нарушений правил:</h6>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Нарушение</th>
+                                    <th>Санкция</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Нарушение сроков ответа</td>
+                                    <td>Предупреждение</td>
+                                </tr>
+                                <tr>
+                                    <td>Непрофессиональное общение</td>
+                                    <td>Обязательное обучение</td>
+                                </tr>
+                                <tr>
+                                    <td>Нарушение конфиденциальности</td>
+                                    <td>Приостановка доступа</td>
+                                </tr>
+                                <tr>
+                                    <td>Игнорирование обращений</td>
+                                    <td>Дисциплинарное взыскание</td>
+                                </tr>
+                                <tr>
+                                    <td>Систематические нарушения</td>
+                                    <td>Отстранение от работы с системой</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bookmark me-2"></i>Быстрая справка
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item">
+                            <h6 class="mb-1">Сроки ответов:</h6>
+                            <small class="text-muted">24 часа - срочные, 48 часов - обычные</small>
+                        </div>
+                        <div class="list-group-item">
+                            <h6 class="mb-1">Конфиденциальность:</h6>
+                            <small class="text-muted">Строго обязательно</small>
+                        </div>
+                        <div class="list-group-item">
+                            <h6 class="mb-1">Профессионализм:</h6>
+                            <small class="text-muted">Всегда вежливо и конструктивно</small>
+                        </div>
+                        <div class="list-group-item">
+                            <h6 class="mb-1">Эскалация:</h6>
+                            <small class="text-muted">При необходимости передавать выше</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bolt me-2"></i>Быстрые действия
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary">
+                            <i class="fas fa-inbox me-2"></i>Проверить обращения
+                        </a>
+                        <a href="{% url 'teacher_faq' %}" class="btn btn-info">
+                            <i class="fas fa-question-circle me-2"></i>Открыть FAQ
+                        </a>
+                        <a href="{% url 'teacher_playbook' %}" class="btn btn-success">
+                            <i class="fas fa-book-open me-2"></i>Открыть плейбук
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-phone me-2"></i>Контакты для вопросов
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <h6>По вопросам правил:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope text-primary me-2"></i>rules@witte.ru</li>
+                        <li><i class="fas fa-phone text-primary me-2"></i>+7 (495) 123-45-67</li>
+                    </ul>
+                    
+                    <h6>По техническим вопросам:</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope text-primary me-2"></i>support@witte.ru</li>
+                        <li><i class="fas fa-phone text-primary me-2"></i>+7 (495) 123-45-68</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="fas fa-info-circle me-2"></i>Информация
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-1">
+                        <strong>Версия правил:</strong> 1.0
+                    </p>
+                    <p class="text-muted mb-1">
+                        <strong>Дата обновления:</strong> 2025
+                    </p>
+                    <p class="text-muted mb-0">
+                        <strong>Ответственный:</strong> Администрация университета
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

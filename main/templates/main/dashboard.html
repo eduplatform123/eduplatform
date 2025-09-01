@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+
+{% block title %}Панель управления - Московский Университет имени С.Ю. Витте{% endblock %}
+
+{% block breadcrumbs %}
+<div class="container mt-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                <i class="fas fa-tachometer-alt me-1"></i>Панель управления
+            </li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h3 mb-0">
+                    <i class="fas fa-tachometer-alt me-2"></i>
+                    Панель управления
+                </h1>
+                <div>
+                    {% if user.profile.user_type == 'admin' %}
+                        <a href="{% url 'admin_dashboard' %}" class="btn btn-primary me-2">
+                            <i class="fas fa-cogs me-2"></i>Панель администратора
+                        </a>
+                    {% elif user.profile.user_type == 'student' %}
+                        <a href="{% url 'feedback_form' %}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Отправить обратную связь
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="card-title mb-1">
+                                Добро пожаловать, {{ user.get_full_name|default:user.username }}!
+                            </h5>
+                            <p class="text-muted mb-0">
+                                Роль: 
+                                {% if user.profile.user_type == 'admin' %}
+                                    <span class="badge bg-danger">Администратор</span>
+                                {% elif user.profile.user_type == 'teacher' %}
+                                    <span class="badge bg-primary">Преподаватель</span>
+                                {% else %}
+                                    <span class="badge bg-success">Студент</span>
+                                {% endif %}
+                                {% if user.profile.student_id %}
+                                    | Студент №{{ user.profile.student_id }}
+                                {% endif %}
+                            </p>
+                        </div>
+                                                 <div class="col-md-4 text-md-end">
+                             <div class="d-flex flex-wrap justify-content-md-end gap-2">
+                                 <a href="{% url 'profile' %}" class="btn btn-outline-primary">
+                                     <i class="fas fa-user-edit me-2"></i>Редактировать профиль
+                                 </a>
+                                 {% if user.profile.user_type == 'student' %}
+                                     <a href="{% url 'view_feedback' %}" class="btn btn-outline-info">
+                                         <i class="fas fa-paper-plane me-2"></i>Мои обращения
+                                     </a>
+                                 {% elif user.profile.user_type == 'teacher' %}
+                                     <a href="{% url 'view_feedback' %}" class="btn btn-outline-info">
+                                         <i class="fas fa-inbox me-2"></i>Полученные обращения
+                                     </a>
+                                 {% else %}
+                                     <a href="{% url 'view_feedback' %}" class="btn btn-outline-info">
+                                         <i class="fas fa-list me-2"></i>Все обращения
+                                     </a>
+                                 {% endif %}
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        {% if user.profile.user_type == 'student' %}
+            <div class="col-md-4 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-paper-plane fa-2x text-primary mb-2"></i>
+                        <h4 class="card-title">{{ feedback_forms.count }}</h4>
+                        <p class="card-text">Отправленных обращений</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-clock fa-2x text-warning mb-2"></i>
+                        <h4 class="card-title">{{ pending_count }}</h4>
+                        <p class="card-text">Ожидающих ответа</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                        <h4 class="card-title">{{ completed_count }}</h4>
+                        <p class="card-text">Завершенных</p>
+                    </div>
+                </div>
+            </div>
+        {% elif user.profile.user_type == 'teacher' %}
+            <div class="col-md-4 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-inbox fa-2x text-primary mb-2"></i>
+                        <h4 class="card-title">{{ feedback_forms.count }}</h4>
+                        <p class="card-text">Полученных обращений</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-clock fa-2x text-warning mb-2"></i>
+                        <h4 class="card-title">{{ pending_count }}</h4>
+                        <p class="card-text">Требуют ответа</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                        <h4 class="card-title">{{ completed_count }}</h4>
+                        <p class="card-text">Обработанных</p>
+                    </div>
+                </div>
+            </div>
+        {% elif user.profile.user_type == 'admin' %}
+            <div class="col-md-3 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-2x text-primary mb-2"></i>
+                        <h4 class="card-title">{{ feedback_forms.count }}</h4>
+                        <p class="card-text">Всего обращений</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-clock fa-2x text-warning mb-2"></i>
+                        <h4 class="card-title">{{ pending_count }}</h4>
+                        <p class="card-text">Ожидающих</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-spinner fa-2x text-info mb-2"></i>
+                        <h4 class="card-title">{{ in_progress_count }}</h4>
+                        <p class="card-text">В работе</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                        <h4 class="card-title">{{ completed_count }}</h4>
+                        <p class="card-text">Завершенных</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+         {% if user.profile.user_type == 'teacher' %}
+     <div class="row mb-4">
+         <div class="col-12">
+             <div class="card">
+                 <div class="card-header">
+                     <h5 class="mb-0">
+                         <i class="fas fa-book me-2"></i>Документация и правила
+                     </h5>
+                 </div>
+                 <div class="card-body">
+                     <div class="row">
+                         <div class="col-md-4 mb-3">
+                             <div class="card h-100 border-0 shadow-sm">
+                                 <div class="card-body text-center">
+                                     <i class="fas fa-question-circle fa-3x text-primary mb-3"></i>
+                                     <h5 class="card-title">FAQ</h5>
+                                     <p class="card-text text-muted">Часто задаваемые вопросы и ответы для преподавателей</p>
+                                     <a href="{% url 'teacher_faq' %}" class="btn btn-primary">
+                                         <i class="fas fa-arrow-right me-2"></i>Открыть FAQ
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-4 mb-3">
+                             <div class="card h-100 border-0 shadow-sm">
+                                 <div class="card-body text-center">
+                                     <i class="fas fa-book-open fa-3x text-success mb-3"></i>
+                                     <h5 class="card-title">Плейбук</h5>
+                                     <p class="card-text text-muted">Руководство по работе с системой обратной связи</p>
+                                     <a href="{% url 'teacher_playbook' %}" class="btn btn-success">
+                                         <i class="fas fa-arrow-right me-2"></i>Открыть плейбук
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-4 mb-3">
+                             <div class="card h-100 border-0 shadow-sm">
+                                 <div class="card-body text-center">
+                                     <i class="fas fa-gavel fa-3x text-warning mb-3"></i>
+                                     <h5 class="card-title">Правила</h5>
+                                     <p class="card-text text-muted">Правила и регламенты работы с обращениями студентов</p>
+                                     <a href="{% url 'teacher_rules' %}" class="btn btn-warning">
+                                         <i class="fas fa-arrow-right me-2"></i>Открыть правила
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     {% endif %}
+
+     {% if user.profile.user_type == 'student' %}
+     <div class="row mb-4">
+         <div class="col-12">
+             <div class="card">
+                 <div class="card-header">
+                     <h5 class="mb-0">
+                         <i class="fas fa-book me-2"></i>Документация и правила
+                     </h5>
+                 </div>
+                 <div class="card-body">
+                     <div class="row">
+                         <div class="col-md-6 mb-3">
+                             <div class="card h-100 border-0 shadow-sm">
+                                 <div class="card-body text-center">
+                                     <i class="fas fa-question-circle fa-3x text-primary mb-3"></i>
+                                     <h5 class="card-title">FAQ</h5>
+                                     <p class="card-text text-muted">Часто задаваемые вопросы и ответы для студентов</p>
+                                     <a href="{% url 'student_faq' %}" class="btn btn-primary">
+                                         <i class="fas fa-arrow-right me-2"></i>Открыть FAQ
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-6 mb-3">
+                             <div class="card h-100 border-0 shadow-sm">
+                                 <div class="card-body text-center">
+                                     <i class="fas fa-gavel fa-3x text-warning mb-3"></i>
+                                     <h5 class="card-title">Правила</h5>
+                                     <p class="card-text text-muted">Правила и регламенты работы с системой обратной связи</p>
+                                     <a href="{% url 'student_rules' %}" class="btn btn-warning">
+                                         <i class="fas fa-arrow-right me-2"></i>Открыть правила
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     {% endif %}
+
+    
+</div>
+{% endblock %}
