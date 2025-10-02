@@ -103,15 +103,53 @@ class TeacherResponseForm(forms.ModelForm):
 
 
 class UserProfileForm(forms.ModelForm):
+    first_name = forms.CharField(
+        max_length=30, 
+        required=False, 
+        label="Имя",
+        widget=forms.TextInput(attrs={"class": "form-control"})
+    )
+    last_name = forms.CharField(
+        max_length=30, 
+        required=False, 
+        label="Фамилия",
+        widget=forms.TextInput(attrs={"class": "form-control"})
+    )
+    phone = forms.CharField(
+        max_length=20, 
+        required=False, 
+        label="Телефон",
+        widget=forms.TextInput(attrs={"class": "form-control"})
+    )
+    department = forms.CharField(
+        max_length=100, 
+        required=False, 
+        label="Отдел/Факультет",
+        widget=forms.TextInput(attrs={"class": "form-control"})
+    )
+    teacher_id = forms.CharField(
+        max_length=20, 
+        required=False, 
+        label="ID преподавателя",
+        widget=forms.TextInput(attrs={"class": "form-control"})
+    )
+
     class Meta:
         model = UserProfile
-        fields = ["student_id"]
+        fields = ["student_id", "phone", "department", "teacher_id"]
         widgets = {
             "student_id": forms.TextInput(attrs={"class": "form-control"}),
         }
         labels = {
             "student_id": "Номер студенческого",
         }
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if user:
+            self.fields['first_name'].initial = user.first_name
+            self.fields['last_name'].initial = user.last_name
 
 
 class PublicFeedbackForm(forms.ModelForm):
